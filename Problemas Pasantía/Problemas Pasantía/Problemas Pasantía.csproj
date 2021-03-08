@@ -6,4 +6,8 @@
     <RootNamespace>Problemas_Pasantía</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ConsoleUtilitiesLite" Version="4.0.0" />
+  </ItemGroup>
+
 </Project>
