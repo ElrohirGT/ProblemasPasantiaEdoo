@@ -38,15 +38,15 @@ namespace Problemas_Pasantía
             {
                 if (string.IsNullOrEmpty(word))
                     continue;
+                
+                if (resultString.Length != 0)
+                    resultString += " ";
 
                 if (word.Length < 5)
                 {
                     resultString += word;
                     continue;
                 }
-
-                if (resultString.Length != 0)
-                    resultString += " ";
 
                 char[] inversedWordChars = word.Reverse().ToArray();
                 resultString += new string(inversedWordChars);//new string necesita un array, no un Enumerable.
