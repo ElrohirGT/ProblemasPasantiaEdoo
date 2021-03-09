@@ -6,6 +6,8 @@ namespace Problemas_Pasantía
     {
         internal static IProblem CreateFrom(int numberSelected)
         {
+            //Acá se podría usar Reflection para poder crear la clase dinámicamente dependiendo del número que haya seleccionado
+            //sin embargo creo que eso ya sería overkill.
             switch (numberSelected)
             {
                 case 1:

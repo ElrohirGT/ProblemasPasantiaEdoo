@@ -35,7 +35,7 @@ namespace Problemas_Pasantía
         private void GameMenu()
         {
             Console.WriteLine("Do you know how to play? (y/n): ");
-            var response = Console.ReadLine().Trim();
+            var response = Console.ReadLine().Trim().ToLower();
             if (!response.Equals("y"))
                 ShowManual();
         }
@@ -64,7 +64,7 @@ namespace Problemas_Pasantía
             _player1 = new HumanPlayer(Console.ReadLine().Trim(), PLAYER1_SIGN);
 
             Console.WriteLine("One player mode? (y/n): ");
-            var response = Console.ReadLine().Trim();
+            var response = Console.ReadLine().Trim().ToLower();
             bool useBot = response.Equals("y");
             if (useBot)
             {

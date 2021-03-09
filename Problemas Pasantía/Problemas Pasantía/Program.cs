@@ -19,9 +19,9 @@ namespace Problemas_Pasantía
                 LogInfoMessage("Type q/Q to quit the selection menu.");
 
                 Console.Write("Welcome, please write a number between 1-4 to select a problem: ");
-                string response = Console.ReadLine().Trim();
+                string response = Console.ReadLine().Trim().ToLower();
 
-                if (response.Equals("q") || response.Equals("Q"))
+                if (response.Equals("q"))
                     break;
 
                 if (int.TryParse(response, out int numberSelected))

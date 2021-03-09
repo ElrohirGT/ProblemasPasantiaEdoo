@@ -126,12 +126,13 @@ namespace Problemas_Pasantía
 
         private static void AddHundredPrefixIfNeeded(List<string> numberInLetters, char previousDigit, int i)
         {
-            if (i == 2)
-            {
-                if (!previousDigit.Equals('0'))
-                    numberInLetters.Add("and");
-                numberInLetters.Add("hundred");
-            }
+            if (i != 2)
+                return;
+            //si es número divisible exactamente dentro de 100, como 200, 300, etc...
+            bool numberIsExactHundred = previousDigit.Equals('0');
+            if (!numberIsExactHundred)
+                numberInLetters.Add("and");
+            numberInLetters.Add("hundred");
         }
         private void ShowResult(int number, string numberInLetters) => Console.WriteLine($"{number} => {numberInLetters}");
     }
