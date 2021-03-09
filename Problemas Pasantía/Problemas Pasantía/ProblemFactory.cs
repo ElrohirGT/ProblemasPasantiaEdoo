@@ -14,8 +14,8 @@ namespace Problemas_Pasantía
                     return new Problem2();
                 case 3:
                     return new Problem3();
-                //case 4:
-                //    return new Problem4();
+                case 4:
+                    return new Problem4();
                 default:
                     return null;
             }
