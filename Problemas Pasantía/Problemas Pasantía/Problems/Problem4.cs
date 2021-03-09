@@ -69,7 +69,7 @@ namespace Problemas_Pasantía
             if (useBot)
             {
                 Console.WriteLine("Lonely eh? I got you, let's play a game!");
-                _player2 = new BotPlayer("BOT", TicTacToeCellValue.Circle);
+                _player2 = new BotPlayer("BOT", PLAYER2_SIGN);
             }
             else
             {
@@ -100,6 +100,7 @@ namespace Problemas_Pasantía
 
                 if (_ticTacToeBoard.IsThereAWinner)
                     break;
+
                 ChangeTurn();
             }
         }

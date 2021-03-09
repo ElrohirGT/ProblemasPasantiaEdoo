@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using static ConsoleUtilitiesLite.ConsoleUtilitiesLite;
 
 namespace Problemas_Pasantía.Problems.TicTacToe
 {
@@ -10,8 +7,9 @@ namespace Problemas_Pasantía.Problems.TicTacToe
     {
         const int BOARD_SIZE = 3;
 
-        int[][][] patterns = new int[][][]
+        int[][][] _patterns = new int[][][]
         {
+            //Lineas horizontales
             new int[][]{
                 new int[]{0,0},new int[]{0,1},new int[]{0,2},
             },
@@ -21,11 +19,25 @@ namespace Problemas_Pasantía.Problems.TicTacToe
             new int[][]{
                 new int[]{2,0 },new int[]{2,1},new int[]{2,2}
             },
+            //Lineas diagonales
             new int[][]{
                 new int[]{0,0 },new int[]{1,1},new int[]{2,2}
             },
             new int[][]{
                 new int[]{0,2 },new int[]{1,1},new int[]{2,0}
+            },
+            //Lineas verticales
+            new int[][]
+            {
+                new int[]{0,0}, new int[]{1,0}, new int[]{2,0}
+            },
+            new int[][]
+            {
+                new int[]{0,1}, new int[]{1,1}, new int[]{2,1}
+            },
+            new int[][]
+            {
+                new int[]{0,2}, new int[]{1,2}, new int[]{2,2}
             }
         };
 
@@ -39,8 +51,12 @@ namespace Problemas_Pasantía.Problems.TicTacToe
             _board = new ITicTacToeBoardCell[BOARD_SIZE][];
 
             for (int i = 0; i < BOARD_SIZE; i++)
+            {
+                _board[i] = new ITicTacToeBoardCell[BOARD_SIZE];
+
                 for (int j = 0; j < BOARD_SIZE; j++)
                     _board[i][j] = new TicTacToeBoardCell();
+            }
         }
 
         public bool IsThereAWinner { get; private set; } = false;
@@ -79,7 +95,7 @@ namespace Problemas_Pasantía.Problems.TicTacToe
 
         private bool CheckIfSomeoneWon()
         {
-            foreach (var pattern in patterns)
+            foreach (var pattern in _patterns)
                 if (CheckPattern(pattern))
                     return true;
 
