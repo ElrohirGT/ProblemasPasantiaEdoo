@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using static ConsoleUtilitiesLite.ConsoleUtilitiesLite;
 
 //Escriba una función que tome una cadena de una o más palabras y devuelva la misma cadena,
@@ -33,25 +34,24 @@ namespace Problemas_Pasantía
 
         private static string EvaluateSentence(string response)
         {
-            string resultString = "";
-            foreach (var word in response.Split(" ", StringSplitOptions.RemoveEmptyEntries))
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var word in response.Split(' ', StringSplitOptions.RemoveEmptyEntries))
             {
                 if (string.IsNullOrEmpty(word))
                     continue;
                 
-                if (resultString.Length != 0)
-                    resultString += " ";
+                if (stringBuilder.Length != 0)
+                    stringBuilder.Append(' ');
 
                 if (word.Length < 5)
                 {
-                    resultString += word;
+                    stringBuilder.Append(word);
                     continue;
                 }
 
-                char[] inversedWordChars = word.Reverse().ToArray();
-                resultString += new string(inversedWordChars);//new string necesita un array, no un Enumerable.
+                stringBuilder.Append(word.Reverse());
             }
-            return resultString;
+            return stringBuilder.ToString();
         }
 
         private static void ShowConvertedSentence(string before, string after) => Console.WriteLine($"{before} => {after}");
