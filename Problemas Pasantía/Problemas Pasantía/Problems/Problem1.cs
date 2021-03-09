@@ -49,7 +49,7 @@ namespace Problemas_Pasantía
                     continue;
                 }
 
-                stringBuilder.Append(word.Reverse());
+                stringBuilder.Append(new string(word.Reverse().ToArray()));
             }
             return stringBuilder.ToString();
         }
