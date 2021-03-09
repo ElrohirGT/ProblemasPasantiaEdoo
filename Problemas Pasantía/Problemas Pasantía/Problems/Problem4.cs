@@ -41,8 +41,22 @@ namespace Problemas_Pasantía
         }
         private void ShowManual()
         {
-            //TODO Create the manual.
-            LogErrorMessage("No manual yet!");
+            Console.Clear();
+            TicTacToeBoardExamples boardExamples = new TicTacToeBoardExamples();
+
+            Console.WriteLine("Welcome to Tic Tac Toe, the objective of the game is to make 3 consecutive signs in a line.");
+            Console.WriteLine("This is an example where the circle wins.");
+            boardExamples.ShowDiagonalWins();
+            
+            Console.WriteLine("If you want to play against the computer you just need to answer \"y\" to the One player mode question. If you want to play with a friend, just answer \"n\" or press enter.");
+            Console.WriteLine("If you choosed multiplayer and after you set your names, you will be asked to input which cell you want to mark with your sign. The correct format for this is row cell. Heres an example:");
+            boardExamples.ShowInputExample();
+
+            Console.WriteLine("And that's all you need to know to play de game!");
+
+            LogInfoMessage("Press any key to go back...");
+            Console.ReadLine();
+            Console.Clear();
         }
         private void InitializeGame()
         {
