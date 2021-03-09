@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using static ConsoleUtilitiesLite.ConsoleUtilitiesLite;
 
 namespace Problemas_Pasantía.Problems.TicTacToe
@@ -27,16 +29,18 @@ namespace Problemas_Pasantía.Problems.TicTacToe
             }
         };
 
-        ITicTacToeBoardCell[,] _board;
+        ITicTacToeBoardCell[][] _board;
         private int _filledCellsCount = 0;
+
+        public ReadOnlyCollection<ITicTacToeBoardCell[]> BoardState => Array.AsReadOnly(_board);
 
         public TicTacToeBoard()
         {
-            _board = new ITicTacToeBoardCell[BOARD_SIZE, BOARD_SIZE];
+            _board = new ITicTacToeBoardCell[BOARD_SIZE][];
 
             for (int i = 0; i < BOARD_SIZE; i++)
                 for (int j = 0; j < BOARD_SIZE; j++)
-                    _board[i, j] = new TicTacToeBoardCell();
+                    _board[i][j] = new TicTacToeBoardCell();
         }
 
         public bool IsThereAWinner { get; private set; } = false;
@@ -48,7 +52,7 @@ namespace Problemas_Pasantía.Problems.TicTacToe
             {
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    char cellValue = (char)_board[i, j].Value;
+                    char cellValue = (char)_board[i][j].Value;
                     Console.Write($" {cellValue} ");
                     if ((j + 1) != BOARD_SIZE)
                         Console.Write("|");
@@ -62,10 +66,10 @@ namespace Problemas_Pasantía.Problems.TicTacToe
             if (row < 0 || cell < 0 || row >= BOARD_SIZE || cell >= BOARD_SIZE)
                 return false;
 
-            if (_board[row,cell].Value != TicTacToeCellValue.Default)
+            if (_board[row][cell].Value != TicTacToeCellValue.Default)
                 return false;
 
-            _board[row, cell].Value = sign;
+            _board[row][cell].Value = sign;
             ++_filledCellsCount;
 
             IsThereAWinner = CheckIfSomeoneWon();
@@ -84,14 +88,14 @@ namespace Problemas_Pasantía.Problems.TicTacToe
 
         private bool CheckPattern(int[][] pattern)
         {
-            TicTacToeCellValue signToCheck = _board[pattern[0][0], pattern[0][1]].Value;
+            TicTacToeCellValue signToCheck = _board[pattern[0][0]][pattern[0][1]].Value;
 
             if (signToCheck == TicTacToeCellValue.Default)
                 return false;
 
             foreach (var cell in pattern)
             {
-                if (signToCheck != _board[cell[0], cell[1]].Value)
+                if (signToCheck != _board[cell[0]][cell[1]].Value)
                     return false;
             }
             return true;
