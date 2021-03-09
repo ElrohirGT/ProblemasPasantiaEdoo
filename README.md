@@ -29,4 +29,4 @@ Si solo necesitas compilar el proyecto en una aplicación, puedes hacerlo de una
 4. Clona o descarga el repositorio en tu computadora.
 5. Entra a la consola y dirígete a la carpeta del proyecto en tu computadora, es la carpeta que tiene el archivo .sln.
 6. Corre el comando "dotnet tool restore" y posteriormente "dotnet cake", con esto se inicia el proceso de compilación para tu plataforma.
-7. La aplicación la encontrarás dentro de "Builds", busca un archivo con el nombre de "Problemas Pasantía".
+7. La aplicación la encontrarás dentro de "Builds", busca un ejecutable con el nombre de "Problemas Pasantía".
